@@ -1,0 +1,35 @@
+@import 'node_modules/bourbon/core/bourbon';
+@import 'base/base';
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+
+#app {
+    display: grid;
+    height: 100%;
+    grid-template-columns: minmax(1em, auto) minmax(auto, 30em) minmax(1em, auto);
+    grid-template-rows: minmax(5em, auto) minmax(auto, 30em) minmax(5em, auto);
+    grid-gap: 1px 1px;
+    align-content: stretch;
+    justify-content: stretch;
+    margin: 1em;
+  }
+
+.talk {
+    grid-area: 2 / 2 / 3 / 3;
+    display: flex;
+    flex-flow: column;
+    justify-content: stretch;
+}
+
+.shout {
+    grid-area: 1 / 1 / 4 / 4;
+}
+
+
+.btn {@extend #{$all-buttons};}
