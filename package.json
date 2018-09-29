@@ -1,11 +1,12 @@
 {
-  "name": "reinforce",
+  "name": "shout!",
   "version": "1.0.0",
   "description": "Make big text",
   "main": "index.js",
   "scripts": {
     "start": "parcel ./src/index.html",
     "build": "parcel build ./src/index.html",
+    "lint": "eslint ./src",
     "test": "test"
   },
   "author": "Luke Wiwatowski",
@@ -18,7 +19,12 @@
     "react-textfit": "^1.1.0"
   },
   "devDependencies": {
-    "eslint": "^5.6.0",
+    "eslint": "^5.6.1",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
     "parcel": "^1.10.1",
     "parcel-plugin-sw-precache": "^1.0.1",
     "sass": "^1.14.1"
