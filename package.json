@@ -1,5 +1,5 @@
 {
-  "name": "shout!",
+  "name": "shout",
   "version": "1.0.0",
   "description": "Make big text",
   "main": "index.js",
@@ -24,6 +24,7 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-node": "^7.0.1",
     "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-react": "^7.11.1",
     "eslint-plugin-standard": "^4.0.0",
     "parcel": "^1.10.1",
     "parcel-plugin-sw-precache": "^1.0.1",

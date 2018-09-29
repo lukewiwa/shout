@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
-import {registerServiceWorker} from './register-service-worker'
+import { registerServiceWorker } from './register-service-worker'
 import './scss/app.scss'
 
 // main app
@@ -14,5 +14,5 @@ ReactDOM.render((
     <App />
   </Router>
 ),
-  document.getElementById("app")
+document.getElementById('app')
 )
