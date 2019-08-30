@@ -8,7 +8,9 @@
     "@types/react": "16.9.2",
     "@types/react-dom": "16.9.0",
     "react": "^16.9.0",
+    "react-auto-text": "^1.0.0",
     "react-dom": "^16.9.0",
+    "react-scale-text": "^1.2.2",
     "react-scripts": "3.1.1",
     "typescript": "3.6.2"
   },

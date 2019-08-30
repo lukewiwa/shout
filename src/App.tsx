@@ -1,4 +1,6 @@
 import React, { useState, ReactEventHandler, ChangeEvent } from "react";
+// @ts-ignore
+import ScaleText from "react-scale-text";
 
 const Talk = (props: any) => {
   return (
@@ -10,7 +12,7 @@ const Talk = (props: any) => {
         onChange={props.onTextChange}
       ></input>
       <button
-        className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+        className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-5"
         onClick={props.onShout}
       >
         SHOUT!
@@ -21,8 +23,16 @@ const Talk = (props: any) => {
 
 const Shout = (props: any) => {
   return (
-    <div className="flex-col">
-      <button onClick={props.onClose}>x</button> <span>{props.text}</span>
+    <div className="h-screen w-full flex align-middle items-center">
+      <button
+        className="absolute top-0 left-0 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+        onClick={props.onClose}
+      >
+        x
+      </button>
+      <ScaleText className="h-screen w-full">
+        <span className="h-screen align-middle">{props.text}</span>
+      </ScaleText>
     </div>
   );
 };
@@ -35,7 +45,7 @@ const App: React.FC = () => {
     setText(event.target.value);
 
   return (
-    <div className="h-full w-full flex flex-col">
+    <div className="bg-red-100 h-screen w-full flex flex-col justify-center static">
       {shout ? (
         <Shout onClose={toggleShout} text={text.toUpperCase()} />
       ) : (
