@@ -15,17 +15,10 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 10.16.3
-      - name: npm install, build, and test
-        run: |
-          npm ci
-          npm run build --if-present
-          npm test
+      - name: Build and Deploy
+        uses: JamesIves/github-pages-deploy-action@master
         env:
-          CI: true
-      - name: Deploy
-        run: |
-          git config --global user.email "luke.wiwa@gmail.com"
-          git config --global user.name "lukewiwa"
-          npm run deploy
-        env:
-          CI: true
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: build
+          BUILD_SCRIPT: npm install && npm run build
