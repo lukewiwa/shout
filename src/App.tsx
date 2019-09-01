@@ -23,15 +23,15 @@ const App: React.FC = () => {
 
 const Talk = (props: TalkProps) => {
   return (
-    <div className="flex flex-col stretch justify-between w-full max-w-2xl self-center p-5">
+    <div className="flex flex-col stretch justify-between w-full max-w-2xl self-center p-5 pt-0">
       <input
         type="text"
-        className="bg-white focus:outline-none focus:border-orange-400 border border-grey-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
+        className="bg-white focus:outline-none focus:border-orange-400 border border-grey-300 py-2 px-4 block w-full appearance-none leading-normal"
         value={props.text}
         onChange={props.onTextChange}
       ></input>
       <button
-        className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded mt-5"
+        className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-4 mt-5"
         type="button"
         onClick={props.onShout}
       >
@@ -43,7 +43,7 @@ const Talk = (props: TalkProps) => {
 
 const Shout = (props: ShoutProps) => {
   return (
-    <div className="h-screen w-full flex align-middle items-center text-orange-800">
+    <div className="h-screen w-full flex items-center align-middle text-orange-800 font-bold text-center">
       <button
         className="absolute top-0 left-0 bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4"
         onClick={props.onClose}
