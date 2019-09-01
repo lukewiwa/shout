@@ -23,7 +23,6 @@ jobs:
         env:
           CI: true
       - name: Deploy
-        if: succeed()
         run: |
           git config --global user.email "luke.wiwa+actions@gmail.com"
           git config --global user.name "gh-actions"
