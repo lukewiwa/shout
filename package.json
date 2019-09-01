@@ -7,6 +7,7 @@
     "@types/node": "12.7.2",
     "@types/react": "16.9.2",
     "@types/react-dom": "16.9.0",
+    "gh-pages": "^2.1.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-scripts": "3.1.1",
@@ -18,7 +19,8 @@
     "start": "npm run build:style && react-scripts start",
     "build": "npm run build:style && react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages --message '[skip ci] Updates' --dist build"
   },
   "eslintConfig": {
     "extends": "react-app"
