@@ -24,8 +24,8 @@ jobs:
           CI: true
       - name: Deploy
         run: |
-          git config --global user.email "luke.wiwa+actions@gmail.com"
-          git config --global user.name "gh-actions"
+          git config --global user.email "luke.wiwa@gmail.com"
+          git config --global user.name "lukewiwa"
           npm run deploy
         env:
           CI: true
