@@ -11,7 +11,7 @@ const App: React.FC = () => {
     setText(event.target.value);
 
   return (
-    <div className="bg-orange-100 h-screen w-full flex flex-col justify-center static font-sans">
+    <div className="bg-orange-100 h-full w-full flex flex-col justify-center static font-sans">
       {shout ? (
         <Shout onClose={toggleShout} text={text.toUpperCase()} />
       ) : (
@@ -43,13 +43,10 @@ const Talk = (props: TalkProps) => {
 
 const Shout = (props: ShoutProps) => {
   return (
-    <div className="h-screen w-full flex items-center align-middle text-orange-800 font-bold text-center">
-      <button
-        className="absolute top-0 left-0 bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4"
-        onClick={props.onClose}
-      >
-        x
-      </button>
+    <div
+      onClick={props.onClose}
+      className="h-screen w-full flex items-center align-middle text-orange-800 font-bold text-center"
+    >
       <FittedText defaultFontSize={1000}>{props.text}</FittedText>
     </div>
   );
