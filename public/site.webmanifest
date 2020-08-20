@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "start_url": ".",
+  "start_url": "/shout",
   "theme_color": "#DD6B20",
   "background_color": "#FFFAF0",
   "display": "standalone"
