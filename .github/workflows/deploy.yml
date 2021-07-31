@@ -11,14 +11,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - name: Use Node.js 10.16.3
+      - name: Use Node.js 16.5.0
         uses: actions/setup-node@v1
         with:
-          node-version: 10.16.3
+          node-version: 16.5.0
       - name: Build and Deploy
         uses: JamesIves/github-pages-deploy-action@master
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BRANCH: gh-pages
           FOLDER: build
-          BUILD_SCRIPT: npm install && npm run build
+          BUILD_SCRIPT: yarn install && yarn run build
