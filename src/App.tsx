@@ -1,4 +1,9 @@
-import React, { useState, ReactEventHandler, ChangeEvent } from "react";
+import React, {
+  useState,
+  ReactEventHandler,
+  FormEventHandler,
+  ChangeEventHandler,
+} from "react";
 // @ts-ignore
 import FittedText from "yarft";
 import { TalkProps, ShoutProps } from "./types";
@@ -6,8 +11,9 @@ import { TalkProps, ShoutProps } from "./types";
 const App: React.FC = () => {
   const [shout, setShout] = useState(false);
   const toggleShout: ReactEventHandler = () => setShout(!shout);
+
   const [text, setText] = useState("");
-  const handleText = (event: ChangeEvent<HTMLInputElement>) =>
+  const handleText: ChangeEventHandler<HTMLInputElement> = (event) =>
     setText(event.target.value);
 
   return (
@@ -22,9 +28,14 @@ const App: React.FC = () => {
 };
 
 const Talk = (props: TalkProps) => {
+  const handleSubmit: FormEventHandler = (e) => {
+    props.onShout(e);
+    e.preventDefault();
+  };
+
   return (
     <form
-      onSubmit={props.onShout}
+      onSubmit={handleSubmit}
       className="flex flex-col stretch justify-between w-full max-w-2xl self-center p-5 pt-0"
     >
       <input
