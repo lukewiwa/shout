@@ -8,20 +8,22 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      FULLY_QUALIFIED_DOMAIN: lukewiwa.com
+      SUB_DOMAIN: shout
+      AWS_DEFAULT_REGION: ap-southeast-2
 
     steps:
-      - uses: actions/checkout@v1
-      - name: Use Node.js 16.5.0
-        uses: actions/setup-node@v1
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
         with:
-          node-version: 16.5.0
+          node-version: "16"
 
       - name: Install & Build
         run: yarn install && yarn run build
 
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: ./build
+        working-directory: infra
+        run: npm ci && npm run synth && npm run deploy
