@@ -22,9 +22,19 @@ preview:
 sso-login profile="default":
 	aws sso login --profile {{profile}}
 
+# Install dependencies for infra
+infra-install:
+	cd infra && npm ci
+
 # Bootstrap CDK (uses the region from your logged-in profile)
 bootstrap:
 	cd infra && npm run cdk -- bootstrap
+
+# Deploy OIDC stack for GitHub Actions (one-time setup)
+deploy-oidc:
+	# Build the web app before deploying infrastructure
+	npm run build
+	cd infra && npm run cdk -- deploy ShoutOidcStack --require-approval never
 
 # Deploy all stacks (DNS → Certificate → Infra)
 deploy:

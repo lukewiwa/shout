@@ -3,27 +3,27 @@ import * as cdk from "aws-cdk-lib";
 import { DNSStack } from "../lib/dns-stack";
 import { CertificateStack } from "../lib/certificate-stack";
 import { InfraStack } from "../lib/infra-stack";
+import { OidcStack } from "../lib/oidc-stack";
 
 const app = new cdk.App();
 
 const env = {
-  account: process.env.AWS_ACCOUNT_ID || process.env.CDK_DEFAULT_ACCOUNT,
-  region: process.env.AWS_REGION || process.env.CDK_DEFAULT_REGION,
+  account: process.env.CDK_DEFAULT_ACCOUNT,
+  region: process.env.CDK_DEFAULT_REGION ?? "ap-southeast-2",
 };
 
-if (!env.account || !env.region) {
-  throw new Error(
-    "AWS account and region must be set via CDK_DEFAULT_ACCOUNT/CDK_DEFAULT_REGION " +
-    "or AWS_ACCOUNT_ID/AWS_REGION environment variables, or via AWS CLI configuration."
-  );
-}
+// OIDC stack - Creates GitHub OIDC provider and IAM role for GitHub Actions
+// This should be deployed first, before other stacks
+new OidcStack(app, "ShoutOidcStack", {
+  env,
+  githubOrg: "lukewiwa",
+  githubRepo: "shout",
+  githubBranches: ["master", "main"],
+});
 
 // DNS stack - Route53 is global, but we create it in the primary region
 const dnsStack = new DNSStack(app, "ShoutDNSStack", {
-  env: {
-    account: env.account,
-    region: env.region,
-  },
+  env,
   crossRegionReferences: true,
 });
 
@@ -49,10 +49,7 @@ const infraStack = new InfraStack(
   certificateStack.certificate,
   dnsStack.hostedZone,
   {
-    env: {
-      account: env.account,
-      region: env.region,
-    },
+    env,
     crossRegionReferences: true,
   }
 );
