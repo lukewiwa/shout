@@ -7,20 +7,16 @@ import * as acm from "aws-cdk-lib/aws-certificatemanager";
 import * as origins from "aws-cdk-lib/aws-cloudfront-origins";
 import * as route53 from "aws-cdk-lib/aws-route53";
 import * as alias from "aws-cdk-lib/aws-route53-targets";
-import { FULLY_QUALIFIED_DOMAIN } from "./settings";
 
 export class InfraStack extends cdk.Stack {
   constructor(
     scope: Construct,
     id: string,
     certificate: acm.Certificate,
+    hostedZone: route53.IHostedZone,
     props?: cdk.StackProps
   ) {
     super(scope, id, props);
-
-    const hostedZone = route53.HostedZone.fromLookup(this, "ShoutHostedZone", {
-      domainName: FULLY_QUALIFIED_DOMAIN,
-    });
 
     const websiteBucket = new s3.Bucket(this, "ShoutPwaBucket", {
       removalPolicy: cdk.RemovalPolicy.DESTROY,
@@ -37,7 +33,7 @@ export class InfraStack extends cdk.Stack {
         origin: origins.S3BucketOrigin.withOriginAccessControl(websiteBucket),
         viewerProtocolPolicy: cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
       },
-      domainNames: [FULLY_QUALIFIED_DOMAIN],
+      domainNames: [hostedZone.zoneName],
       certificate,
     });
 
