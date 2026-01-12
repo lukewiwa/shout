@@ -7,14 +7,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: "16"
-      - name: npm install, build, and test
+          node-version: "22"
+      - name: Install, build, and lint
         run: |
-          yarn install
-          yarn run build
-          yarn run lint
-        env:
-          CI: true
+          npm ci
+          npm run build
+          npm run lint
