@@ -4,7 +4,7 @@ import React, {
   FormEventHandler,
   ChangeEventHandler,
 } from "react";
-// @ts-ignore
+// @ts-expect-error no types available
 import FittedText from "yarft";
 import { TalkProps, ShoutProps } from "./types";
 
