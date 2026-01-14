@@ -18,7 +18,7 @@ new OidcStack(app, "ShoutOidcStack", {
   env,
   githubOrg: "lukewiwa",
   githubRepo: "shout",
-  githubBranches: ["master", "main"],
+  githubBranches: ["main"],
 });
 
 // DNS stack - Route53 is global, but we create it in the primary region

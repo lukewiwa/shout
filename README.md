@@ -79,7 +79,7 @@ just deploy-stack ShoutInfraStack
 
 ### Automated Deployment
 
-Once the OIDC stack is deployed and GitHub secrets are configured, every push to the `master` or `main` branch will automatically:
+Once the OIDC stack is deployed and GitHub secrets are configured, every push to the `main` branch will automatically:
 
 1. Build the application
 2. Deploy infrastructure changes to AWS using OIDC authentication (no long-lived credentials needed)
